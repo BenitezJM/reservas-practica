@@ -1,0 +1,6 @@
+# Tareas NNN: <nombre>
+
+Cada tarea: pequeña, verificable y con su test.
+
+- [ ] T1 — descripción — verificación: ...
+- [ ] T2 — ...
