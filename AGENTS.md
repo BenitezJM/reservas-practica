@@ -13,7 +13,7 @@ Proyecto de práctica para entrevistas
 - Explica brevemente qué hiciste y por qué en cada cambio; el autor debe entenderlo.
 - Cambios pequeños y revisables. No refactorices fuera del alcance de la tarea.
 - No agregues dependencias sin justificarlas.
-- No asumas versiones ni nombres de dependencias de memoria (Spring Boot 4 y Angular 22 son recientes): verifica en la documentación oficial.
+- No asumas versiones ni nombres de dependencias de memoria: verifica en la documentación oficial.
 - Ante la duda entre simple y "elegante", elige simple.
 
 ## Idioma y nombres
@@ -21,7 +21,7 @@ Proyecto de práctica para entrevistas
 - Documentación y mensajes de commit en inglés. Commits tipo Conventional Commits.
 
 ## Versiones
-Java 21 · Spring Boot 4.1.x · Maven · PostgreSQL 17 · Angular 22 · TypeScript 6 · Node.js 24.x
+Java 21 · Spring Boot 3.4.x · Maven · PostgreSQL 17 · Angular 22 · TypeScript 6 · Node.js 24.x
 
 ## Comandos
 - Base de datos: `docker compose up -d`

@@ -1,4 +1,4 @@
-# Backend (Java 21 + Spring Boot 4.1.x)
+# Backend (Java 21 + Spring Boot 3.4.x)
 
 Paquete base: `com.reservas.practica`. Organización **por feature**, no por capa:
 `usuario`, `complejo` (complejo + cancha), `tarifa`, `reserva`, `common`.
@@ -15,7 +15,7 @@ Dentro de cada feature: `*Controller`, `*Service`, `*Repository`, entidad y `dto
 - Errores con un manejador global (`@RestControllerAdvice`) y formato Problem Details.
 - Seguridad: Spring Security, JWT, roles `ADMIN` y `CLIENTE`. Nunca guardar contraseñas en claro.
 - Usar características de Java 21 cuando aporten claridad (records, switch con patrones, `Optional`).
-- Spring Boot 4 cambió nombres de starters y paquetes respecto a 3.x: verificar en la documentación oficial antes de agregar dependencias.
+- Usar Spring Boot 3.4.x y verificar en la documentación oficial antes de agregar nuevas dependencias.
 
 ## Tests
 - Unitarios para reglas de negocio (JUnit 5, sin Spring cuando sea posible).
