@@ -9,7 +9,7 @@ Dentro de cada feature: `*Controller`, `*Service`, `*Repository`, entidad y `dto
 - Controllers finos; la lógica de negocio vive en los `Service`.
 - Transacciones en la capa de servicio (`@Transactional`), lecturas con `readOnly = true`.
 - Asociaciones `LAZY` por defecto. Evitar N+1: `JOIN FETCH`, `@EntityGraph` o proyecciones; verificarlo con tests o logs de SQL.
-- Esquema solo vía Flyway (`src/main/resources/db/migration`, `V<n>__descripcion.sql`).
+- Esquema solo vía Liquibase (`src/main/resources/db/changelog`).
   `spring.jpa.hibernate.ddl-auto` en `validate`. Nunca editar una migración ya aplicada.
 - Validación con Bean Validation en los DTOs de entrada.
 - Errores con un manejador global (`@RestControllerAdvice`) y formato Problem Details.

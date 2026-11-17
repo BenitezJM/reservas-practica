@@ -4,7 +4,7 @@ Aplicación de reserva de canchas deportivas. Proyecto de práctica para entrevi
 desarrollado con Spec-Driven Development (SDD) y agentes en Antigravity.
 
 ## Stack
-- Backend: Java 21, Spring Boot 4.1.x, Hibernate/JPA, Flyway, PostgreSQL, Maven
+- Backend: Java 21, Spring Boot 4.1.x, Hibernate/JPA, Liquibase, PostgreSQL, Maven
 - Frontend: Angular 22, TypeScript 6, Node.js 24.x
 - Infra local: Docker Compose
 
