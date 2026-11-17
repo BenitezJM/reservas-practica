@@ -41,4 +41,11 @@ if not exist "%MAVEN_HOME%\bin\mvn.cmd" (
     exit /b 1
 )
 
+@REM Si JAVA_HOME no esta definido, intentar detectar el Java de IntelliJ o JDKs estandar
+if not defined JAVA_HOME (
+    if exist "C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.3\jbr\bin\java.exe" (
+        set "JAVA_HOME=C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.3\jbr"
+    )
+)
+
 call "%MAVEN_HOME%\bin\mvn.cmd" %*

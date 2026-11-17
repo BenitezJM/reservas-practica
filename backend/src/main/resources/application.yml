@@ -1,11 +1,8 @@
 spring:
   application:
     name: reservas-backend
-  datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://ep-cold-lab-bc4ijtpe-pooler.c-16.us-east-1.aws.neon.tech/neondb?sslmode=require}
-    username: ${SPRING_DATASOURCE_USERNAME:neondb_owner}
-    password: ${SPRING_DATASOURCE_PASSWORD:}
-    driver-class-name: org.postgresql.Driver
+  profiles:
+    default: local
   jpa:
     hibernate:
       ddl-auto: validate
