@@ -6,7 +6,7 @@ Principios no negociables. Toda spec, plan y tarea debe respetarlos.
 2. **Spec antes que código.** No se implementa sin spec aprobada con criterios de aceptación verificables.
 3. **Simplicidad.** La solución más simple que cumpla la spec. Sin abstracciones especulativas.
 4. **La integridad la garantiza la base de datos.** Las reglas críticas (como R1, no solapar reservas) se imponen también en PostgreSQL, no solo en el código.
-5. **Tests reales.** Integración contra PostgreSQL con Testcontainers. Cada regla de negocio tiene al menos un test.
+5. **Tests reales.** Integración contra PostgreSQL real (Testcontainers en CI / base dedicada en local; ver ADR 0004). Cada regla de negocio tiene al menos un test.
 6. **Migraciones inmutables.** El esquema cambia solo con nuevas migraciones Liquibase.
 7. **Contrato explícito.** La API se documenta con OpenAPI y no expone entidades JPA.
 8. **Seguridad por defecto.** Endpoints protegidos salvo los públicos explícitos; validación de entrada siempre.

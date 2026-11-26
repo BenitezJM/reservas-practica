@@ -15,4 +15,6 @@ dist/
 .env
 *-local.yml
 application-local.yml
+*-test.yml
+application-test.yml
 

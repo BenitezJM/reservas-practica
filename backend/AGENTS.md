@@ -19,7 +19,7 @@ Dentro de cada feature: `*Controller`, `*Service`, `*Repository`, entidad y `dto
 
 ## Tests
 - Unitarios para reglas de negocio (JUnit 5, sin Spring cuando sea posible).
-- Integración con Testcontainers (PostgreSQL real, no H2).
+- Integración contra PostgreSQL real (Testcontainers en CI / base dedicada en local; ver ADR 0004).
 - La regla R1 (no solapar reservas) requiere un test de concurrencia.
 
 ## Comandos (desde `backend/`)
