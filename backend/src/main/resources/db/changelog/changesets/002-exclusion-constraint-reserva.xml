@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- Habilitar extension btree_gist para soportar tipos escalares (BIGINT) en indices GiST -->
+    <changeSet id="002-habilitar-btree-gist" author="reservas">
+        <sql>
+            CREATE EXTENSION IF NOT EXISTS btree_gist;
+        </sql>
+    </changeSet>
+
+    <!-- Restriccion de exclusion para evitar solapamiento de reservas activas (Regla R1) -->
+    <changeSet id="002-exclusion-constraint-no-solapar-reservas" author="reservas">
+        <sql>
+            ALTER TABLE reserva ADD CONSTRAINT no_solapar_reservas_activas
+            EXCLUDE USING gist (
+                cancha_id WITH =,
+                tstzrange(fecha_inicio, fecha_fin) WITH &amp;&amp;
+            ) WHERE (estado IN ('CONFIRMADA', 'PENDIENTE'));
+        </sql>
+        <rollback>
+            ALTER TABLE reserva DROP CONSTRAINT IF EXISTS no_solapar_reservas_activas;
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

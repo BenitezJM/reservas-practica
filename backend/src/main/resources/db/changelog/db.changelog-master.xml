@@ -5,4 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
+    <include file="db/changelog/changesets/001-crear-tablas-iniciales.xml"/>
+    <include file="db/changelog/changesets/002-exclusion-constraint-reserva.xml"/>
+
 </databaseChangeLog>

@@ -12,7 +12,7 @@ Cada tarea es pequeña, verificable, incluye sus propios tests y se debe marcar 
 ---
 
 ### Fase 2: Modelo de datos y Persistencia (Liquibase + JPA)
-- [ ] **T2.1 — Changelogs de Liquibase para tablas base y Exclusion Constraint (R1):**  
+- [x] **T2.1 — Changelogs de Liquibase para tablas base y Exclusion Constraint (R1):**  
   Crear changelog XML para las tablas (`complejo`, `cancha`, `tarifa_horaria`, `usuario`, `reserva`) y changelog para la extensión `btree_gist` y la `EXCLUDE CONSTRAINT` de no solapamiento. Incluirlos en `db.changelog-master.xml`.  
   *Verificación:* Test de integración con Testcontainers que aplique las migraciones en PostgreSQL y valide la creación del esquema y la constraint.
 - [ ] **T2.2 — Entidades JPA y Repositorios:**  
