@@ -25,16 +25,19 @@ Cada tarea es pequeña, verificable, incluye sus propios tests y se debe marcar 
 ---
 
 ### Fase 3: Lógica de negocio, API REST y Tests (Spring Boot)
-- [ ] **T3.1 — DTOs y Manejo global de excepciones:**  
-  Definir los DTOs inmutables (records de Java) para disponibilidad y reservas. Crear `GlobalExceptionHandler` (`@RestControllerAdvice`) que formatee errores en estándar *Problem Details* (RFC 7807) para errores 400, 404, 409 y 500.  
-  *Verificación:* Test unitario del handler verificando la estructura de error JSON ante excepciones de validación y de conflicto.
-- [ ] **T3.2 — Endpoint de Disponibilidad (GET /canchas/{id}/disponibilidad):**  
+- [ ] **T3.1 — DTOs inmutables del contrato de API:**  
+  Definir los DTOs inmutables (records de Java) en `reserva.dto`: `DisponibilidadResponse`, `TurnoDto`, `CrearReservaRequest` y `ReservaResponse`, con validaciones Bean Validation y formato JSON apropiado para fechas y horas.  
+  *Verificación:* Tests unitarios de serialización/deserialización y validación de los DTOs.
+- [ ] **T3.2 — Excepciones de dominio y Manejo global de errores (RFC 7807):**  
+  Crear excepciones de dominio (`RecursoNoEncontradoException`, `ReglaNegocioException`, `ReservaSolapadaException`) y `GlobalExceptionHandler` (`@RestControllerAdvice`) que formatee errores en estándar *Problem Details* (RFC 7807) para errores 400, 404, 409 (incluyendo violación de exclusion constraint de PostgreSQL) y 500.  
+  *Verificación:* Tests unitarios con `MockMvc` verificando la estructura de error JSON ante cada tipo de excepción.
+- [ ] **T3.3 — Endpoint de Disponibilidad (GET /canchas/{id}/disponibilidad):**  
   Implementar `DisponibilidadService` y `DisponibilidadController`. Generar slots de 60 minutos según el horario del complejo (R2), verificar fechas pasadas (R6) y marcar turnos libres u ocupados según reservas existentes.  
   *Verificación:* Tests unitarios del cálculo de turnos y test de integración `DisponibilidadControllerIT` contra Testcontainers.
-- [ ] **T3.3 — Endpoint de Creación de Reserva (POST /reservas):**  
+- [ ] **T3.4 — Endpoint de Creación de Reserva (POST /reservas):**  
   Implementar `ReservaService` y `ReservaController`. Validar horario, calcular y congelar tarifa (R3), persistir la reserva en estado `CONFIRMADA` y capturar violación de constraint (R1) para responder `409 Conflict`.  
   *Verificación:* Test de integración `ReservaControllerIT` probando creación exitosa (201) y rechazo por turno ocupado (409).
-- [ ] **T3.4 — Test de Concurrencia para Regla R1:**  
+- [ ] **T3.5 — Test de Concurrencia para Regla R1:**  
   Escribir un test de integración concurrente con `ExecutorService` o hilos paralelos que intente reservar el mismo turno exactamente al mismo tiempo con dos usuarios distintos.  
   *Verificación:* Uno de los hilos obtiene `201 Created` y el otro obtiene `409 Conflict`, garantizando cero reservas solapadas en la base.
 
