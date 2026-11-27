@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- Datos semilla para desarrollo y pruebas -->
+    <changeSet id="003-insertar-datos-semilla" author="reservas">
+        <!-- 1 Complejo deportivo: Complejo Central con horario 08:00 a 23:00 -->
+        <insert tableName="complejo">
+            <column name="nombre" value="Complejo Central"/>
+            <column name="hora_apertura" value="08:00:00"/>
+            <column name="hora_cierre" value="23:00:00"/>
+        </insert>
+
+        <!-- 2 Canchas activas para el complejo -->
+        <insert tableName="cancha">
+            <column name="complejo_id" valueComputed="(SELECT id FROM complejo WHERE nombre = 'Complejo Central' LIMIT 1)"/>
+            <column name="nombre" value="Cancha 1 - Fútbol 5"/>
+            <column name="activa" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="cancha">
+            <column name="complejo_id" valueComputed="(SELECT id FROM complejo WHERE nombre = 'Complejo Central' LIMIT 1)"/>
+            <column name="nombre" value="Cancha 2 - Fútbol 7"/>
+            <column name="activa" valueBoolean="true"/>
+        </insert>
+
+        <!-- Tarifas horarias para cada cancha -->
+        <insert tableName="tarifa_horaria">
+            <column name="cancha_id" valueComputed="(SELECT id FROM cancha WHERE nombre = 'Cancha 1 - Fútbol 5' LIMIT 1)"/>
+            <column name="precio" valueNumeric="5000.00"/>
+        </insert>
+
+        <insert tableName="tarifa_horaria">
+            <column name="cancha_id" valueComputed="(SELECT id FROM cancha WHERE nombre = 'Cancha 2 - Fútbol 7' LIMIT 1)"/>
+            <column name="precio" valueNumeric="7000.00"/>
+        </insert>
+
+        <!-- 1 Usuario de prueba con rol CLIENTE -->
+        <insert tableName="usuario">
+            <column name="email" value="cliente@test.com"/>
+            <column name="nombre" value="Cliente Test"/>
+            <column name="rol" value="CLIENTE"/>
+        </insert>
+
+        <rollback>
+            <delete tableName="usuario">
+                <where>email = 'cliente@test.com'</where>
+            </delete>
+            <delete tableName="tarifa_horaria">
+                <where>cancha_id IN (SELECT id FROM cancha WHERE complejo_id IN (SELECT id FROM complejo WHERE nombre = 'Complejo Central'))</where>
+            </delete>
+            <delete tableName="cancha">
+                <where>complejo_id IN (SELECT id FROM complejo WHERE nombre = 'Complejo Central')</where>
+            </delete>
+            <delete tableName="complejo">
+                <where>nombre = 'Complejo Central'</where>
+            </delete>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

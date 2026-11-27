@@ -18,7 +18,7 @@ Cada tarea es pequeña, verificable, incluye sus propios tests y se debe marcar 
 - [x] **T2.2 — Entidades JPA y Repositorios:**  
   Crear las entidades `@Entity` (`Complejo`, `Cancha`, `TarifaHoraria`, `Usuario`, `Reserva`) con relaciones `LAZY` y sus correspondientes interfaces `JpaRepository`.  
   *Verificación:* Test de persistencia con `@DataJpaTest` o Testcontainers guardando y consultando entidades.
-- [ ] **T2.3 — Changelog de datos semilla (Seed data):**  
+- [x] **T2.3 — Changelog de datos semilla (Seed data):**  
   Crear changelog XML con datos iniciales (1 complejo con horario 08:00 a 23:00, 2 canchas, tarifa horaria y 1 usuario de prueba) para desarrollo local y tests.  
   *Verificación:* Inicio de la aplicación contra PostgreSQL local o de test confirmando los registros cargados.
 

@@ -7,5 +7,6 @@
 
     <include file="db/changelog/changesets/001-crear-tablas-iniciales.xml"/>
     <include file="db/changelog/changesets/002-exclusion-constraint-reserva.xml"/>
+    <include file="db/changelog/changesets/003-datos-semilla-desarrollo.xml"/>
 
 </databaseChangeLog>
