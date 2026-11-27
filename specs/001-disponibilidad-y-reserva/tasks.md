@@ -25,7 +25,7 @@ Cada tarea es pequeña, verificable, incluye sus propios tests y se debe marcar 
 ---
 
 ### Fase 3: Lógica de negocio, API REST y Tests (Spring Boot)
-- [ ] **T3.1 — DTOs inmutables del contrato de API:**  
+- [x] **T3.1 — DTOs inmutables del contrato de API:**  
   Definir los DTOs inmutables (records de Java) en `reserva.dto`: `DisponibilidadResponse`, `TurnoDto`, `CrearReservaRequest` y `ReservaResponse`, con validaciones Bean Validation y formato JSON apropiado para fechas y horas.  
   *Verificación:* Tests unitarios de serialización/deserialización y validación de los DTOs.
 - [ ] **T3.2 — Excepciones de dominio y Manejo global de errores (RFC 7807):**  
