@@ -5,8 +5,8 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <!-- Datos semilla para desarrollo y pruebas -->
-    <changeSet id="003-insertar-datos-semilla" author="reservas">
+    <!-- Datos semilla para desarrollo y pruebas (se excluyen automaticamente en produccion) -->
+    <changeSet id="003-insertar-datos-semilla" author="reservas" context="dev, local, test">
         <!-- 1 Complejo deportivo: Complejo Central con horario 08:00 a 23:00 -->
         <insert tableName="complejo">
             <column name="nombre" value="Complejo Central"/>
